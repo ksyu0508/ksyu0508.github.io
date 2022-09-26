@@ -23,7 +23,6 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-
 title: KSYU's blog
 email: sdkhyu0508@naver.com
 author: ksyu0508
@@ -55,7 +54,7 @@ yat:
 # sitemap: false
 
 # If you want to change site language, you can set lang option
-# lang: "en"  # default lang is en
+lang: "ko"  # default lang is en
 
 # Translate languges
 # langs refer to https://cloud.google.com/translate/docs/languages
@@ -143,15 +142,18 @@ yat:
 #     subheading: "Your awesome subheading"
 #     banner: "Your image url"
 
+# Pagination setting
+paginate: 7
+
 # Banner default settings
 # These banner settings are for global banner default, but you can also
 # config it by the front matter for one specific post
-# banner:
-#   video: null             # Video banner source
-#   loop: true              # Video loop
-#   volume: 0               # Video volume (100% is 1.0)
+banner:
+  video: https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm             # Video banner source
+  loop: true              # Video loop
+  volume: 0               # Video volume (100% is 1.0)
 #   start_at: 0             # Video start time
-#   image: null             # Image banner source
+#   image: /assets/images/banners/home.jpeg             # Image banner source
 #   opacity: 1.0            # Banner opacity (100% is 1.0)
 #   background: "rgba(0, 0, 0, 0.8)"  # Banner background (Could be a image)
 #   height: "640px"         # Banner default height
@@ -162,8 +164,6 @@ yat:
 # Excerpt size setting
 # excerpt_size: 350
 
-# Pagination setting
-# paginate: 5
 
 # Disqus comments
 # disqus:
