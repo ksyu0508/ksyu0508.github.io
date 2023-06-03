@@ -56,8 +56,8 @@ yat:
 # If you want to change site language, you can set lang option
 lang: "ko"  # default lang is en
 
-Translate languges
-langs refer to https://cloud.google.com/translate/docs/languages
+# Translate languges
+# langs refer to https://cloud.google.com/translate/docs/languages
 translate_langs:
   - lang: en
     img: https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png
@@ -181,10 +181,11 @@ banner:
 # Build settings
 # highlighter: none
 markdown: kramdown
-higligther: rouge
+highlighter: rouge
 lsi: false
 expert_separator: "\n\n"
 incremental: false
+
 kmarkdown:
   input: GFM
 
