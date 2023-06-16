@@ -4,7 +4,6 @@ title: 소프트웨어 엔지니어링
 subtitle: Software Engineering
 categories: [SE]
 tags: [Development, 컴퓨터 과학]
-published: false
 ---
 
 ## 0. 개요
