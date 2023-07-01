@@ -1,6 +1,6 @@
 ---
 layout: post
-title: github blog 링크 미리보기 기능 추가하기
+title: github blog 링크 미리보기 기능 추가
 subtitle: jekyll-linkpreview plugin
 categories: [github blog]
 tags: [jekyll, open graph]
@@ -9,11 +9,11 @@ published: True
 
 ## 개요
 
-github blog에서도 네이버 블로그나 티스토리 블로그에서 처럼 링크 임베딩시 링크 미리보기가 적용되었으면 해서 관련 플러그인을 찾아보았다. `jekyll-linkpreview`라는 플러그인이 있어 적용해보려 한다.
-
-{% linkpreview "https://github.com/ysk24ok/jekyll-linkpreview" %}
+github blog에서도 네이버 블로그나 티스토리 블로그에서 처럼 링크 임베딩시 링크 미리보기가 적용되었으면 해서 관련 플러그인을 찾아보았다. `jekyll-linkpreview`라는 플러그인이 있어 적용해보려 한다. github blog에서 기본 플러그인 이외의 플러그인을 사용하고 싶다면 다음 포스팅을 확인하면 도움이 될 것이다.
 
 ## jekyll-preview 설치
+
+{% linkpreview "https://github.com/ysk24ok/jekyll-linkpreview" %}
 
 ### 1. `Gemfile`에 아래 내용 추가
 

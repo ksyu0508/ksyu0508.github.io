@@ -100,10 +100,10 @@ translate_langs:
 # greatgold: #f2cb05
 # greenblue: #389092
 #
-# brand_color: orangered
+# brand_color: greatgold
 #
 # Custom color as below:
-# brand_color: "#1a8e42"
+brand_color: "#107C10"
 
 # Night/Dark mode
 # Default mode is "auto", "auto" is for auto nightshift
@@ -120,11 +120,11 @@ translate_langs:
 
 # Code badge setting
 # You can enable or disable the code badge and so on
-# code_badge:
-#   enabled: "true"
-#   color: "#fff"
-#   background_color: "#ff4e00"
-#   text_transform: "uppercase"  # ("uppercase", "lowercase", "capitalize")
+code_badge:
+  enabled: "true"
+  color: "#fff"
+  background_color: "#107C10"
+  text_transform: "uppercase"  # ("uppercase", "lowercase", "capitalize")
 
 # If you want to link only specific pages in your header, uncomment
 # this and add the path to the pages in order as they should show up
@@ -150,9 +150,10 @@ paginate_path: "/:num/"
 # These banner settings are for global banner default, but you can also
 # config it by the front matter for one specific post
 banner:
-  video: https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm             # Video banner source
-  loop: true              # Video loop
-  volume: 0               # Video volume (100% is 1.0)
+  image: "/assets/images/banners/home2.jpg"
+#   video: https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm             # Video banner source
+#   loop: true              # Video loop
+#   volume: 0               # Video volume (100% is 1.0)
 #   start_at: 0             # Video start time
 #   image: /assets/images/banners/home.jpeg             # Image banner source
 #   opacity: 1.0            # Banner opacity (100% is 1.0)
