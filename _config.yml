@@ -179,6 +179,16 @@ banner:
 #   client_secret: "Your client secret"
 #   redirect_uri: "Your redirect url"   # If you use a custom domain name
 
+jekyll-archives:
+  enabled: []
+  layout: archive
+  permalinks:
+    year: '/:year/'
+    month: '/:year/:month/'
+    day: '/:year/:month/:day/'
+    tag: '/tag/:name/'
+    category: '/category/:name/'
+
 # Build settings
 # highlighter: none
 markdown: kramdown
@@ -197,3 +207,4 @@ plugins:
   - jekyll-paginate
   - jekyll-spaceship
   - jekyll-linkpreview
+  - jekyll-archives
