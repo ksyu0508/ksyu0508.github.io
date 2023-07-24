@@ -138,8 +138,8 @@ header_pages:
 # Page default value
 defaults:
   home:
-    heading: "ksyu0508's blog"
-    subheading: "전공 공부 및 개발 일지"
+    heading: "無念無想 人生無常"
+    subheading: "하면 하지, 할 수 있지"
     banner: "Your image url"
 
 # Pagination setting
