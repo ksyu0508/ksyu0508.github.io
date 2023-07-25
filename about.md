@@ -16,7 +16,7 @@ banner: "/assets/images/banners/home.jpg"
 ## 📄 Extracurricular Activities
 
 * KSCY 13th facilitator
-    - 2019.11 ~ 2019.02
+    - 2019.11 ~ 2020.02
     - 컴퓨터과학 세션
 
 * YBIGTA 15th
@@ -30,11 +30,13 @@ banner: "/assets/images/banners/home.jpg"
 * [zezedu](https://zezedu.com/)
     - 2020.06 ~ 2020.08
     - AI 개발 인턴
+    - KoBERT를 이용한 수학문제 유형 분류기 및 검색 시스템 개발
 
 * newcureM
     - 연세의료원 산학협력단 기술지주회사
     - 2022.08 ~ 2023.02
     - AI 개발 인턴
+    - CT to MRI image translation, PET image denoising, C-11 Acetate PET image IDH classification 등
 
 ## 🎯 Projects
 
