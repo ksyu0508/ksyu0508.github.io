@@ -1,194 +1,87 @@
-<div align="center">
-  <br>
+## 🌈 About me
 
-  <a href="https://github.com/jeffreytse/jekyll-theme-yat">
-    <img alt="jekyll-theme-yat →~ jekyll" src="https://user-images.githubusercontent.com/9413601/106478481-346fdf00-64e4-11eb-9385-1ab5329c3234.png" width="600">
-  </a>
+안녕하세요, 나만의 서비스를 직접 만들어보기 위해서 공부하는 개발자, 김승유입니다.
 
-  <h1>🎨 JEKYLL YAT THEME 🎨</h1>
+## 🏫 Education
 
-</div>
+* 2016.03 ~ 2019.02 대전과학고등학교 졸업
+* 2019.03 ~ 연세대학교 산업공학과 전공
 
-<h4 align="center">
-  <a href="https://jekyllrb.com/" target="_blank"><code>Jekyll</code></a> theme for elegant writers.
-</h4>
+## 📄 Extracurricular Activities
 
-<p align="center">
-  <a href="https://jeffreytse.github.io/jekyll-theme-yat">
-    <img src="https://github.com/jeffreytse/jekyll-theme-yat/workflows/Github%20Pages/badge.svg"
-      alt="Github Pages" />
-  </a>
+* KSCY 13th facilitator
+    - 2019.11 ~ 2020.02
+    - 컴퓨터과학 세션
 
-  <a href="http://badge.fury.io/rb/jekyll-theme-yat">
-    <img src="https://badge.fury.io/rb/jekyll-theme-yat.svg"
-      alt="Gem Version" />
-  </a>
+* YBIGTA 15th
+    - 2019.07 ~ 2021.02
+    - 연세대학교 빅데이터 학회
+    - YBIGTA 17기 회장
+    - DE/DS 팀 활동
 
-  <a href="https://opensource.org/licenses/MIT">
-    <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg"
-      alt="License: MIT" />
-  </a>
+## 👔 Work Expriences
 
-  <a href="https://liberapay.com/jeffreytse">
-    <img src="http://img.shields.io/liberapay/goal/jeffreytse.svg?logo=liberapay"
-      alt="Donate (Liberapay)" />
-  </a>
+* [zezedu](https://zezedu.com/)
+    - 2020.06 ~ 2020.08
+    - AI 개발 인턴
+    - KoBERT를 이용한 수학문제 유형 분류기 및 검색 시스템 개발
 
-  <a href="https://patreon.com/jeffreytse">
-    <img src="https://img.shields.io/badge/support-patreon-F96854.svg?style=flat-square"
-      alt="Donate (Patreon)" />
-  </a>
+* newcureM
+    - 연세의료원 산학협력단 기술지주회사
+    - 2022.08 ~ 2023.02
+    - AI 개발 인턴
+    - CT to MRI image translation, PET image denoising, C-11 Acetate PET image IDH classification 등
 
-  <a href="https://ko-fi.com/jeffreytse">
-  <img height="20" src="https://www.ko-fi.com/img/githubbutton_sm.svg"
-  alt="Donate (Ko-fi)" />
-  </a>
-</p>
+## 🎯 Projects
 
-<div align="center">
-  <sub>Built with ❤︎ by
-  <a href="https://jeffreytse.net">jeffreytse</a> and
-  <a href="https://github.com/jeffreytse/jekyll-theme-yat/graphs/contributors">contributors </a>
-</div>
+* [Pix2Pix로 피카츄 색칠하기](https://github.com/ksyu0508/Computer-Vision/tree/master/pix2pix)
+    - YBIGTA 신입기수 컨퍼런스
 
-<br>
+* Bi-LSTM 모델로 KoQAUD 2.0 데이터셋 풀기
+    - YBIGTA 미니 컨퍼런스
 
-Hey, nice to meet you, you found this [Jekyll][jekyll] theme. Here the
-**Yet Another Theme** is a modern responsive theme, and it's quiet clear,
-clean and neat for writers and posts. **If you like the theme, give it
-a star!**
+* [Alpha-Omok](https://github.com/ksyu0508/alpha-omok)
+    - YBIGTA 15기 컨퍼런스
 
+* [심심한 와빅이](https://github.com/ksyu0508/ybigta_chatbot)
+    - YBIGTA 16기 컨퍼런스
 
-<p align="center">
+## 🛠 Skills
 
-  <img src="https://user-images.githubusercontent.com/9413601/91842897-6a840b00-ec87-11ea-95ca-52abcc1ac063.png" alt="demo-screenshot" width="780px"/>
+* ML / DL
+    - `Python`
+        - `scikit-learn`
+        - `seaborn`
+        - `Pytorch`
+        - `pydicom`, `nibabel`, `torchio`
 
-</p>
+* Back-end:
+    - `Docker`, `Kubernetes`
+    - `AWS`, `GCP`
+    - `Hadoop`, `Hive`, `Spark`, `Kafka`
+    - `Flask`
+    - `SQL`
+        - `MySQL`
+        - `PostgreSQL`
 
-<h3 align="center">🌌 Night Mode</h3>
+* 앱개발
+    - `Flutter`, `Firebase`
 
-<p align="center">
+* 기타
+    - `C`
+    - `Java`
+    - `Arduino`, `Processing`
 
-  <img src="https://user-images.githubusercontent.com/9413601/94983351-760f6e00-0574-11eb-9494-5303ad6228dc.gif" alt="demo-screenshot" width="780px"/>
+## 🎓 Certification
 
-</p>
+* SQLD(SQL Developer)
 
-## ✨ Features
+## 🏅 Awards and Honors
 
-- Support beautiful __Night Mode__.
-- Modern responsive web design.
-- Full layouts `home`, `post`, `tags`, `archive` and `about`.
-- Uses font awesome 5 for icons.
-- Beautiful Syntax Highlight using [highlight.js][highlight-js].
-- RSS support using [Jekyll Feed][jekyll-feed] gem.
-- Optimized for search engines using [Jekyll Seo Tag][jekyll-seo-tag] gem.
-- Sitemap support using [Jekyll Sitemap][jekyll-sitemap] gem.
-- Complex and flexible table support using [Jekyll Spaceship][jekyll-spaceship] gem.
-- MathJAX and LaTeX optional support using [Jekyll Spaceship][jekyll-spaceship] gem.
-- Media (Youtube, Spotify, etc.) support using [Jekyll Spaceship][jekyll-spaceship] gem.
-- Diagram (PlantUML, Mermaid) support using [Jekyll Spaceship][jekyll-spaceship] gem.
-- Google Translation support.
-- New post tag support.
+* 2015 KMO 동상
+* 2017 한국뇌과학올림피아드 장려
 
-Also, visit the [Live Demo][yat-live-demo] site for the theme.
+## ♟ Military Service
 
-## 🛠️  Installation
-
-There are three ways to install:
-
-- As a [gem-based theme](https://jekyllrb.com/docs/themes/#understanding-gem-based-themes).
-- As a [remote theme](https://blog.github.com/2017-11-29-use-any-theme-with-github-pages/) (GitHub Pages compatible).
-- Forking/directly copying all of the theme files into your project.
-
-### Gem-based Theme Method
-
-Add this line to your Jekyll site's `Gemfile`:
-
-```ruby
-gem "jekyll-theme-yat"
-```
-
-And add this line to your Jekyll site's `_config.yml`:
-
-```yaml
-theme: jekyll-theme-yat
-```
-
-And then execute:
-
-```bash
-$ bundle
-```
-
-Or install it yourself as:
-
-```bash
-$ gem install jekyll-theme-yat
-```
-
-### Remote Theme Method with GitHub Pages
-
-Remote themes are similar to Gem-based themes, but do not require `Gemfile` changes or whitelisting making them ideal for sites hosted with GitHub Pages.
-
-To install:
-
-Add this line to your Jekyll site's `Gemfile`:
-
-```ruby
-gem "github-pages", group: :jekyll_plugins
-```
-
-And add this line to your Jekyll site's `_config.yml`:
-
-```yaml
-# theme: owner/name --> Don't forget to remove/comment the gem-based theme option
-remote_theme: "jeffreytse/jekyll-theme-yat"
-```
-
-And then execute:
-
-```bash
-$ bundle
-```
-
-### GitHub Pages without limitation
-
-GitHub Pages runs in `safe` mode and only allows [a set of whitelisted plugins/themes](https://pages.github.com/versions/). __In other words, the third-party gems will not work normally__.
-
-To use the third-party gem in GitHub Pages without limitation:
-
-Here is a GitHub Action named [jekyll-deploy-action](https://github.com/jeffreytse/jekyll-deploy-action) for Jekyll site deployment conveniently. 👍
-
-
-## 📚 Usage
-
-Add or update your available layouts, includes, sass and/or assets.
-
-## ✏️  Development
-
-To set up your environment to develop this theme, run `bundle install`.
-
-Your theme is setup just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
-
-When your theme is released, only the files in `_data`, `_layouts`, `_includes`, `_sass` and `assets` tracked with Git will be bundled.
-To add a custom directory to your theme-gem, please edit the regexp in `jekyll-theme-yat.gemspec` accordingly.
-
-## 🔫 Contributing
-
-Issues and Pull Requests are greatly appreciated. If you've never contributed to an open source project before I'm more than happy to walk you through how to create a pull request.
-
-You can start by [opening an issue](https://github.com/jeffreytse/jekyll-theme-yat/issues/new) describing the problem that you're looking to resolve and we'll go from there.
-
-## 🌈 License
-
-This theme is licensed under the [MIT license](https://opensource.org/licenses/mit-license.php) © JeffreyTse.
-
-<!-- External links -->
-[jekyll]: https://jekyllrb.com/
-[yat-git-repo]: https://github.com/jeffreytse/jekyll-theme-yat/
-[yat-live-demo]: https://jeffreytse.github.io/jekyll-theme-yat/
-[jekyll-spaceship]: https://github.com/jeffreytse/jekyll-spaceship
-[jekyll-seo-tag]: https://github.com/jekyll/jekyll-seo-tag
-[jekyll-sitemap]: https://github.com/jekyll/jekyll-sitemap
-[jekyll-feed]: https://github.com/jekyll/jekyll-feed
-[highlight-js]: https://github.com/highlightjs/highlight.js
+* 대한민국 육군 병장 만기 전역
+* 2021.02 ~ 2022.08
