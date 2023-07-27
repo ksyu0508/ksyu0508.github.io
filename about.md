@@ -43,7 +43,7 @@ banner: "/assets/images/banners/home.jpg"
 * [Pix2Pix로 피카츄 색칠하기](https://github.com/ksyu0508/Computer-Vision/tree/master/pix2pix)
     - YBIGTA 신입기수 컨퍼런스
 
-* Bi-LSTM 모델로 KoQAUD 2.0 데이터셋 풀기
+* [KorQuAD 2.0을 이용한 Q/A 시스템 구현](https://github.com/ksyu0508/NLP/blob/master/korquad%20%EC%B5%9C%EC%A2%85.pdf)
     - YBIGTA 미니 컨퍼런스
 
 * [Alpha-Omok](https://github.com/ksyu0508/alpha-omok)
