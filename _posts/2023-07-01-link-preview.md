@@ -7,7 +7,7 @@ tags: [jekyll, open graph]
 published: True
 ---
 
-## 개요
+## 서론
 
 github blog에서도 네이버 블로그나 티스토리 블로그에서 처럼 링크 임베딩시 링크 미리보기가 적용되었으면 해서 관련 플러그인을 찾아보았다. `jekyll-linkpreview`라는 플러그인이 있어 적용해보려 한다. github blog에서 기본 플러그인 이외의 플러그인을 사용하고 싶다면 다음 포스팅을 확인하면 도움이 될 것이다.
 
