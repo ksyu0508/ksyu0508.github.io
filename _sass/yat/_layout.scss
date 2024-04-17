@@ -285,7 +285,7 @@ html {
         content: 'NEW';
         position: absolute;
         margin-left: 8px;
-        margin-top: 3px;
+        margin-top: 15px;
         padding: 0px 3px;
         background-color: $brand-color;
         color: #fff;
@@ -600,7 +600,7 @@ html {
       margin: 0;
 
       > :nth-child(1) {
-        @include relative-font-size(3.9);
+        @include relative-font-size(2.75);
         letter-spacing: -1px;
         margin-bottom: 0.1em;
         font-weight: normal;
@@ -627,7 +627,7 @@ html {
     }
 
     .post-subtitle {
-      @include relative-font-size(1.525);
+      @include relative-font-size(1.325);
       color: #ffffffcc;
       padding-right: 280px;
 
