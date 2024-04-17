@@ -166,6 +166,8 @@ banner:
 # Excerpt size setting
 # excerpt_size: 350
 
+permalink: /:categories/:title/
+
 jekyll-archives:
   enabled: []
   layout: archive
