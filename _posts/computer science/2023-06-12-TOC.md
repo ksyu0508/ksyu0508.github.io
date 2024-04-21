@@ -2,7 +2,7 @@
 layout: post
 title: 계산이론
 subtitle: Therory of Computation
-categories: [TOC]
+categories: [computer science]
 tags: [Development, 컴퓨터 과학]
 published: false
 ---

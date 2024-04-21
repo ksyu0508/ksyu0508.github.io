@@ -1,5 +1,5 @@
 .jekyll-linkpreview-wrapper {
-  max-width: 600px;
+  max-width: 1000px;
   margin-bottom: 20px;
   background-color: #F0F0F0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -33,7 +33,7 @@
 }
 
 .jekyll-linkpreview-title {
-  font-size: 25px;
+  font-size: 22px;
   margin: 0 0 2px;
   line-height: 1.3;
 }
