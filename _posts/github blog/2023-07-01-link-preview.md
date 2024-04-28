@@ -146,7 +146,7 @@ Open Graph 메타데이터는 `<meta>` 태그를 사용하여 웹 페이지의 `
 
 ### 2. Open Graph 없는 경우:
 
-{% linkpreview "https://ksyu0508.github.io/python/2023/06/30/TA-lib.html" %}
+{% linkpreview "https://ksyu0508.github.io/debug/TA-lib/" %}
 
 ## 결론
 
