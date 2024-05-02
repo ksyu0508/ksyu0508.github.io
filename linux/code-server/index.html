@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-site-verification" content="gL7v_rlH_MgG02OOs9glh9YTXQWTVfYIW0XuwyYIPQk">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>code-server 설치 및 HTTPS 연결 설정 | ksyu0508’s blog</title>
+<meta name="generator" content="Jekyll v3.9.5">
+<meta property="og:title" content="code-server 설치 및 HTTPS 연결 설정">
+<meta name="author" content="ksyu0508">
+<meta property="og:locale" content="ko">
+<meta name="description" content="서론">
+<meta property="og:description" content="서론">
+<link rel="canonical" href="https://ksyu0508.github.io/linux/code-server/">
+<meta property="og:url" content="https://ksyu0508.github.io/linux/code-server/">
+<meta property="og:site_name" content="ksyu0508’s blog">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2024-04-15T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="code-server 설치 및 HTTPS 연결 설정">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"ksyu0508"},"dateModified":"2024-04-15T00:00:00+00:00","datePublished":"2024-04-15T00:00:00+00:00","description":"서론","headline":"code-server 설치 및 HTTPS 연결 설정","mainEntityOfPage":{"@type":"WebPage","@id":"https://ksyu0508.github.io/linux/code-server/"},"url":"https://ksyu0508.github.io/linux/code-server/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" type="text/css" href="/assets/css/linkpreview.css" media="screen">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/icon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  <!-- <link rel="shortcut icon" href=""> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script src="/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="https://ksyu0508.github.io/feed.xml" title="ksyu0508's blog">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #148114;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header site-header-transparent" role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/">
+  <img class="site-favicon" title="ksyu0508's blog" src="" onerror="this.style.display='none'">
+  ksyu0508's blog
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/">HOME</a><a class="page-link" href="/archives/">ARCHIVES</a><a class="page-link" href="/categories/">CATEGORIES</a><a class="page-link" href="/tags/">TAGS</a><a class="page-link" href="/about/">ABOUT</a><span class="page-link" style="display: inline-block;"><!-- <style>
+  .parent {
+    text-align: center;
+  }
+</style> -->
+
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+</span>
+
+
+
+
+<!---->
+            <span class="page-link">
+
+<div id="google_translate_element" style="display: none;">
+</div>
+
+<span class="ct-language">
+  <ul class="list-unstyled ct-language-dropdown">
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="en">
+          
+          <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png" title="English">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ko">
+          
+          <img src="https://cdn.countryflags.com/thumbs/south-korea/flag-400.png" title="Korean">
+          
+        </a>
+      </li>
+    
+  </ul>
+</span>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: '',
+    autoDisplay: false,
+    layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+  }, 'google_translate_element');
+
+  function restoreLang() {
+    var iframe = document.getElementsByClassName('goog-te-banner-frame')[0];
+    if (!iframe) return;
+
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var restore_el = innerDoc.getElementsByTagName("button");
+
+    for (var i = 0; i < restore_el.length; i++) {
+      if (restore_el[i].id.indexOf("restore") >= 0) {
+        restore_el[i].click();
+        var close_el = innerDoc.getElementsByClassName("goog-close-link");
+        close_el[0].click();
+        return;
+      }
+    }
+  }
+
+  function triggerHtmlEvent(element, eventName) {
+    var event;
+    if (document.createEvent) {
+      event = document.createEvent('HTMLEvents');
+      event.initEvent(eventName, true, true);
+      element.dispatchEvent(event);
+    } else {
+      event = document.createEventObject();
+      event.eventType = eventName;
+      element.fireEvent('on' + event.eventType, event);
+    }
+  }
+
+  var googleCombo = document.querySelector("select.goog-te-combo");
+  var langSelect = document.querySelector('.ct-language');
+  langSelect.addEventListener('click', function(event) {
+    if (!event.target) {
+      return;
+    }
+
+    var selected = document.querySelector('.ct-language .ct-language-selected');
+    if (selected) {
+      selected.classList.remove('ct-language-selected');
+    }
+
+    var target = event.target;
+    while (target && target !== langSelect ) {
+      if (target.matches('.lang-select')) {
+        break;
+      }
+      target = target.parentElement;
+    }
+
+    if (target && target.matches('.lang-select')) {
+      var lang = target.getAttribute('data-lang');
+      if (googleCombo.value == lang) {
+        restoreLang();
+      } else {
+        target.parentElement.classList.add('ct-language-selected');
+        googleCombo.value = lang;
+        triggerHtmlEvent(googleCombo, 'change');
+      }
+    }
+
+    event.preventDefault();
+  });
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</span>
+            <!---->
+
+          </div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  (function() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;documentElement.setAttribute("data-header-transparent", "");var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="page-banner">
+    <div class="page-banner-img">
+<div style="background-image: url(/assets/images/banners/home2.jpg)"></div>
+        <img class="img-placeholder" src="/assets/images/banners/home2.jpg">
+</div>
+    <div class="wrapper">
+      <div class="page-banner-inner">
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">code-server 설치 및 HTTPS 연결 설정</h1>
+  <h2 class="post-subtitle">OMV에 code-server 설치하기</h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2024-04-15T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Apr 15, 2024
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 14 mins</span>
+  </p>
+<div class="post-tags">
+<a class="post-tag" href="/tags.html#linux">#linux</a><a class="post-tag" href="/tags.html#NAS">#NAS</a><a class="post-tag" href="/tags.html#code-server">#code-server</a><a class="post-tag" href="/tags.html#OMV">#OMV</a><a class="post-tag" href="/tags.html#self%20signed%20certificate">#self signed certificate</a><a class="post-tag" href="/tags.html#HTTPS">#HTTPS</a>
+</div></header>
+</div>
+    </div>
+  </section><script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <h2 id="서론">서론</h2>
+
+<p>현재 인턴하고 있는 회사가 보안이 중요하여 사내망에서 작성된 문서나 코드를 밖으로 반출하기가 까다롭다. 개인 공부 내용 정리 및 테스트 개발 환경이 필요하지만 허용되는 개인 전자기기는 아이패드, 갤럭시탭 등의 태블릿까지만 허용되기 때문에, 태블릿에서 사용할 수 있는 간단한 개발환경을 만들고자 한다. 주피터 랩등의 환경도 있지만, 파이썬 뿐만 아니라 다른 파일들도 다룰 예정이기 때문에 익숙한 VS code와 같은 IDE를 원했는데, 놀랍게도 VS code는 마이크로소프트에서 만들었지만 오픈소스이기 때문에, code-server와 같은 웹으로 호스트할 수 있는 IDE가 만들어져 있다. 따라서 개인 NAS에 code-server를 설치하고 안드로이드 태블릿에서 사용할 계획을 세웠다.</p>
+
+<div class="jekyll-linkpreview-wrapper">
+  <div class="jekyll-linkpreview-wrapper-inner">
+    <div class="jekyll-linkpreview-content">
+      <div class="jekyll-linkpreview-image">
+        <a href="https://github.com/microsoft/vscode" target="_blank">
+          <img src="https://opengraph.githubassets.com/e92e6e5a885e62964b990e70f9ef065638a9506a3b6b80befd904990d96d05c0/microsoft/vscode">
+        </a>
+      </div>
+    </div>
+    <div class="jekyll-linkpreview-footer">
+      <div class="jekyll-linkpreview-body">
+        <h1 class="jekyll-linkpreview-title">
+          <a href="https://github.com/microsoft/vscode" target="_blank">GitHub - microsoft/vscode: Visual Studio Code</a>
+        </h1>
+        <div class="jekyll-linkpreview-description">Visual Studio Code. Contribute to microsoft/vscode development by creating an account on GitHub.</div>
+      </div>
+      <a href="github.com" target="_blank">github.com</a>
+    </div>
+  </div>
+</div>
+
+<h2 id="code-server-설치">Code-Server 설치</h2>
+
+<div class="jekyll-linkpreview-wrapper">
+  <div class="jekyll-linkpreview-wrapper-inner">
+    <div class="jekyll-linkpreview-content">
+      <div class="jekyll-linkpreview-image">
+        <a href="https://hub.docker.com/r/linuxserver/code-server" target="_blank">
+          <img src="">
+        </a>
+      </div>
+    </div>
+    <div class="jekyll-linkpreview-footer">
+      <div class="jekyll-linkpreview-body">
+        <h1 class="jekyll-linkpreview-title">
+          <a href="https://hub.docker.com/r/linuxserver/code-server" target="_blank">Docker</a>
+        </h1>
+        <div class="jekyll-linkpreview-description"></div>
+      </div>
+      <a href="hub.docker.com" target="_blank">hub.docker.com</a>
+    </div>
+  </div>
+</div>
+
+<p>docker compose를 활용하여 코드 서버를 구성하였다. 서버의 경우 외부망 접속시 VPN을 활용하고 있기 때문에, 외부에 코드서버가 노출될 일이 없어서 편의를 위해서 별도로 비밀번호를 설정하지는 않았다. code-server의 경우 vs code처럼 터미널을 열 수 있기 때문에 외부에 포트 개방하는 경우에는 비밀번호 설정 이외에도 추가 보안 설정을 필요로 할 것이다.</p>
+
+<pre><code class="language-YAML">services:
+  code-server:
+    image: lscr.io/linuxserver/code-server:latest
+    container_name: code-server
+    environment:
+      - PUID=1000
+      - PGID=100
+      - TZ=Asia/Seoul
+    #   - PASSWORD=password #optional
+    #   - HASHED_PASSWORD= #optional
+    #   - SUDO_PASSWORD=password #optional
+    #   - SUDO_PASSWORD_HASH= #optional
+    #   - PROXY_DOMAIN=code-server.my.domain #optional
+      - DEFAULT_WORKSPACE=/workspace
+    volumes:
+      - /path/to/appdata/config:/config
+      - {마운트 할 디렉토리}:/workspace
+    ports:
+      - 8443:8443
+    restart: unless-stopped
+</code></pre>
+
+<p>컨테이너로 구성된 코드서버로 접속 시, 파일 탐색은 컨테이너 내부만 가능하기 때문에 미리 사용하고자 할 디렉토리를 연결해주어야 한다. 도커 컴포즈 파일에서 DEFAULT_WORKSPACE를 설정할 수 있는데 이는 컨테이너 파일 시스템 기준이며, 여기에 원래 서버에서 사용하고자 할 디렉토리를 마운트한다면 편하게 code-server를 활용 수 있을 것이다.</p>
+
+<p><img src="https://drive.google.com/thumbnail?id=198zNVvvwQ9so5oD5FKotP3I9GIFPSB2j&sz=w1000" alt=""></p>
+
+<p>안드로이드 크롬 메뉴의 홈화면 내보내기 기능을 이용해서, 컴퓨터의 크로니움 기반 브라우저에서 웹을 어플리케이션으로 설치할 수 있는 것처럼 code-server를 별도의 어플처럼 사용할 수 있다. 웹 브라우저에서 접속할 경우에 단축키가 웹 브라우저와 code-server의 것이 섞이기 때문에 사용하기가 불편하다.</p>
+
+<p><img src="https://drive.google.com/thumbnail?id=1CG1QC2WU1SLQgNEXeMlq97juuOlrFATs&sz=w1000" alt="">
+<em><center>갤럭시탭 S8에서 실행 중인 code-server 모습</center></em></p>
+
+<h2 id="self-signed-certificate를-활용한-https-구성">Self signed certificate를 활용한 HTTPS 구성</h2>
+
+<p><img src="https://drive.google.com/thumbnail?id=191FCd0K_x--FM_hqSsypDaeU-uQx6Amr&sz=w1000" alt=""></p>
+
+<p>code-server의 경우 기본적으로는 HTTP를 이용해서 연결되는데, vpn을 활용하고 있어서 내부망으로만 접속할 예정이기에 따로 HTTPS를 설정하지 않으려 하였지만, HTTPS 연결이 아닌 HTTP로만 연결 시 제대로 작동하지 않을 수 있다는 경고가 친절하게 나온다. 그냥 사용하려 했지만, 클립보드를 비롯하여 마크다운 프리뷰 기능이 작동하지 않기 때문에 결국 HTTPS를 구성하기로 하였다.</p>
+
+<p>외부망에 노출되어 있는 상태는 아니였기에 따로 nginx proxy manager 등의 프록시를 활용한 HTTPS 구성은 진행하지 않고, 간단하게 self signed certificate를 이용하여 HTTPS를 구성하려고 하였다.</p>
+
+<div class="jekyll-linkpreview-wrapper">
+  <div class="jekyll-linkpreview-wrapper-inner">
+    <div class="jekyll-linkpreview-content">
+      <div class="jekyll-linkpreview-image">
+        <a href="https://coder.com/docs/code-server/latest/guide" target="_blank">
+          <img src="https://coder.com/og-image.png">
+        </a>
+      </div>
+    </div>
+    <div class="jekyll-linkpreview-footer">
+      <div class="jekyll-linkpreview-body">
+        <h1 class="jekyll-linkpreview-title">
+          <a href="https://coder.com/docs/code-server/latest/guide" target="_blank">Usage - code-server Docs</a>
+        </h1>
+        <div class="jekyll-linkpreview-description">How to set up and use code-server.</div>
+      </div>
+      <a href="coder.com" target="_blank">coder.com</a>
+    </div>
+  </div>
+</div>
+
+<p>code-server documetation을 확인해보면 self-signed certificate를 활용하여 HTTPS를 구성할 수 있음을 안내하고 있다. 실행시 <code class="language-plaintext highlighter-rouge">--cert</code> 옵션을 추가하여 자동으로 인증서 발급 후 HTTPS 연결을 진행하거나, <code class="language-plaintext highlighter-rouge">--cert</code>와 <code class="language-plaintext highlighter-rouge">--cert-key</code>옵션에 따로 <code class="language-plaintext highlighter-rouge">.crt</code>와 <code class="language-plaintext highlighter-rouge">.key</code>파일 경로를 넣어서 별도로 발급한 인증서를 사용하여 HTTPS 연결을 진행할 수도 있다.</p>
+
+<p>docker compose를 활용하여 code-server 이미지를 구동하고 있기 때문에, 인증서를 yaml 파일에 volumes와 command를 활용하여 추가하려 하였지만 제대로 작동하지 않았고, 결국 일단 컨테이너 실행 후 컨테이너 내부의 config 파일을 직접 변경하기로 하였다. <code class="language-plaintext highlighter-rouge">/config/.config/code-server/config.yaml</code>로 기본적으로 위치하고 있다.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">bind-addr</span><span class="pi">:</span> <span class="s">127.0.0.1:8080</span>
+<span class="na">auth</span><span class="pi">:</span> <span class="s">password</span>
+<span class="na">password</span><span class="pi">:</span> <span class="c1"># PASSWORD HASH</span>
+<span class="na">cert</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+
+<p>여기서 <code class="language-plaintext highlighter-rouge">cert</code> 옵션 기본이 false로 되어 있는데, <code class="language-plaintext highlighter-rouge">true</code>로 변경 후 컨테이너를 재실행시키면 된다. 그러면 HTTPS로 접속이 되는 모습을 확인할 수 있다.</p>
+
+<p><img src="https://drive.google.com/thumbnail?id=199OM1mlbiEb4fQkpkiZZY6mzAkPwoNXk&sz=w500" alt="">
+<em><center>그렇지만 여전히 제일 중요한 markdwon preview 기능이 작동하지 않는다...</center></em></p>
+
+<h2 id="파이어폭스로-문제-임시-해결">파이어폭스로 문제 임시 해결..</h2>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Mozilla_Firefox_logo_2013.svg/227px-Mozilla_Firefox_logo_2013.svg.png" alt="">
+<em><center>어떻게 우리는 코드 서버를 구동할 수 있었을까? 정답은 파이어폭스에 있었어</center></em></p>
+
+<p>사실 code-server에서 HTTPS 구성을 해야지 제대로 사용할 수 있다는 내용은 쉽게 찾아 볼 수 있다. 대부분의 사람들은 nginx 등을 활용하여 프록시를 구성하고 SSL 인증서를 발급 후 HTTPS 연결을 만들어 준다. 하지만, 외부망에 연결하고 도메인에 연결하기에는 공유기, VM 등의 여러 조건이 맞물려서 구성하기 귀찮고, 또 혼자서 사용할 목적이다 보니 굳이 외부망에 노출하기 꺼려지기도 해서 self signed certificate로 구성하려 하였다. self signed certificate의 경우 크롬이나 엣지 등의 브라우저에서 연결 전에 안전하지 않은 연결이라고 친절하게 경고를 해주지만, 이를 무시하고 접속할 수 있다.</p>
+
+<div class="jekyll-linkpreview-wrapper">
+  <div class="jekyll-linkpreview-wrapper-inner">
+    <div class="jekyll-linkpreview-content">
+      <div class="jekyll-linkpreview-image">
+        <a href="https://stackoverflow.com/questions/38728176/can-you-use-a-service-worker-with-a-self-signed-certificate" target="_blank">
+          <img src="https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon@2.png?v=73d79a89bded">
+        </a>
+      </div>
+    </div>
+    <div class="jekyll-linkpreview-footer">
+      <div class="jekyll-linkpreview-body">
+        <h1 class="jekyll-linkpreview-title">
+          <a href="https://stackoverflow.com/questions/38728176/can-you-use-a-service-worker-with-a-self-signed-certificate" target="_blank">Can you use a service worker with a self-signed certificate?</a>
+        </h1>
+        <div class="jekyll-linkpreview-description">I have developer server that are used for testing. They have SSL self-signed certificates, which allow us to test the web application over HTTPS, but with prominent warnings that the certificates a...</div>
+      </div>
+      <a href="stackoverflow.com" target="_blank">stackoverflow.com</a>
+    </div>
+  </div>
+</div>
+
+<p>위 스레드를 확인해본 결과, 강제로 연결을 진행하더라도 보안상의 이유로 완전히 모든 기능을 사용할 수 있게 해주는 것은 아닌 것을 확인할 수 있었고, Firefox 브라우저를 활용하여 접속하면 문제 없이 기능이 작동하는 모습을 보여준다. 아마 관련 보안 조치 적용이 크롬이나 엣지보다는 약한 이유 등으로 보여지지만 확실치는 않다.
+안드로이드 태블릿이라는 조건 하에서 둘다 적용하기에는 애매하였는데, PC 환경이나 ipad 등의 경우 크롬에서 이 보안 관련 옵션을 끄고 브라우저로 접속하면 문제가 없다는 내용을 확인할 수 있다. 또, 디바이스나 브라우저에게 code-server에서 만든 인증서를 신뢰하도록 설정해주는 방법도 있다.</p>
+
+<p><img src="https://drive.google.com/thumbnail?id=19E3GlCollq_liEAhKV9W-VeyN4KqVJmm&sz=w1000" alt=""></p>
+
+<p>파이어폭스 브라우저 자체의 문제로, 한글 인코딩이 깨지거나, 폰트가 궁서체로 나오고, 홈화면에 추가 기능을 사용해도 단독 어플리케이션 처럼은 활용할 수 없다는 아쉬움이 존재한다. 그렇지만, 간단한 코딩이나 메모 용도로 사용하기에는 문제 없어보인다.</p>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/linux/WSL-NAS/" title="WSL 네트워크 드라이브 마운트 방법">WSL 네트워크 드라이브 마운트 방법</a><a class="next" href="/prometheus/promql/" title="PromQL 사용법">PromQL 사용법</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/problem%20solving/boj-1055/" title="PromQL 사용법">백준 1055번 문제 풀이</a></li>
+<li><a class="post-link" href="/problem%20solving/SQL-3/" title="PromQL 사용법">프로그래머스 SQL 문제 풀이 (3)</a></li>
+<li><a class="post-link" href="/github%20blog/favicon/" title="PromQL 사용법">Github blog 아이콘 변경</a></li>
+<li><a class="post-link" href="/problem%20solving/SQL-2/" title="PromQL 사용법">프로그래머스 SQL 문제 풀이 (2)</a></li>
+</ul>
+    </div>
+<div class="post-comments">
+      <script src="https://utteranc.es/client.js" repo="ksyu0508/ksyu0508.github.io" issue-term="pathname" theme="github-light" crossorigin="anonymous" async>
+      </script>
+    </div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+      <div>Copyright © 2022 @ksyu0508</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="http://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
