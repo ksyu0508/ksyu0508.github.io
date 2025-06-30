@@ -1,7 +1,17 @@
 /**
  * Animation for transparent header
  */
-html {
+
+ @media print {
+  header.site-header,
+  .site-header,
+  .page-banner,
+  .site-footer {
+    display: none !important;
+  }
+}
+
+ html {
   &[data-header-transparent] {
     header.site-header {
       position: fixed;
