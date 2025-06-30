@@ -19,6 +19,18 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-
 
+      # Ruby 환경 설치
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.7'
+
+      # Bundler 설치 및 의존성 설치
+      - name: Install dependencies
+        run: |
+          gem install bundler -v 2.4.22
+          bundle install --jobs 4 --retry 3
+
       # Use GitHub Deploy Action to build and deploy to Github
       - uses: jeffreytse/jekyll-deploy-action@v0.4.0
         with:

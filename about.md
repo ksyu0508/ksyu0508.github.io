@@ -33,7 +33,7 @@ banner: "/assets/images/banners/home.jpg"
 
 ---
 
-## 👔 Work Expriences
+## 👔 Work Experiences
 
 * **SAP Labs Korea** (2024.07 ~ 현재, 서울)
     - HANA QA Infrastructure 팀 (2025.01 ~ 현재)
